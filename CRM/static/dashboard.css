@@ -1,0 +1,101 @@
+#dashboard-analytics-section-income-number-container {
+    width: 40%;
+}
+
+#dashboard-analytics-section-income-chart-container {
+    width: 60%;
+}
+
+#dashboard-analytics-section-income-number-container h4 {
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #212529
+}
+
+#dashboard-analytics-section-income-number-container h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #212529;
+    margin: 10px 0px
+}
+
+#dashboard-analytics-section-income-number-container h2 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    padding: 3px 5px 3px 5px;
+    border-radius: 10px;
+    margin-top: 14px;
+
+}
+
+#dashboard-analytics-section-income-number-container p {
+    font-family: "Barlow", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #6C757D;
+}
+
+#dashboard-analytics-section-income-number-container h5 {
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #212529
+}
+
+#dashboard-analytics-section-income-number-container .current-month {
+    font-family: "Barlow", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #6C757D
+}
+
+
+#dashboard-analytics-section-target-container {
+    background-color: #9A55FF;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    height: 100%;
+}
+
+
+#dashboard-analytics-section-target-percentage-container p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #F8F9FA;
+
+}
+
+#dashboard-analytics-section-target-percentage-container {
+    position: absolute;
+    top: 31%;
+    left: 39%
+}
+
+
+
+#dashboard-analytics-section-target-numbers-container h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 20x;
+    color: #F8F9FA;
+    margin-top: 20px
+}
+
+.dashboard-analytics-section-target-order-text {
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #F8F9FA
+}
+
+.dashboard-analytics-section .col-9-right {
+    background-color: white;
+    padding: 27px 15px;
+    border-radius: 10px;
+
+}

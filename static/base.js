@@ -1,0 +1,5 @@
+const getBaseHeadlineData = () => {
+
+}
+
+getBaseHeadlineData()

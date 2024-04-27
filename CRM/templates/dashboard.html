@@ -1,7 +1,44 @@
 {% extends 'base.html' %}
+{% load static %}
 
-<h2>dashboard</h2>
+{% block style %}
+<link rel="stylesheet" type='text/css' href="{% static 'dashboard.css' %}">
+{% endblock style %}
 
 {% block content %}
-content
+<div class="dashboard-analytics-section">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div id="dashboard-analytics-section-target-container" class="px-4 pt-4 pb-2">
+                        <canvas id="dashboard-analytics-section-target-chart-canvas"></canvas>
+                        <div id="dashboard-analytics-section-target-percentage-container"></div>
+                        <div id='dashboard-analytics-section-target-numbers-container'></div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="d-flex col-9-right">
+                        <div id="dashboard-analytics-section-income-number-container">
+                        </div>
+                        <div id="dashboard-analytics-section-income-chart-container">
+                            <canvas id="dashboard-analytics-section-income-chart-canvas"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">best selling products</div>
+    </div>
+    <div class="swiper-container">
+        swiper
+    </div>
+</div>
 {% endblock content %}
+
+
+{% block scripts %}
+<script src="{% static 'dashboard.js' %}"></script>
+
+{% endblock scripts %}
