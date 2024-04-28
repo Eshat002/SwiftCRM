@@ -80,9 +80,11 @@ def income_view(request):
 def monthly_target_order_view(request):
     current_date = datetime.datetime.now()
     current_month = current_date.month
-    orders_current_month= Order.objects.filter(timestamp__month=current_month).count()
+    current_year =current_date.year
 
-    target_orders= TargetOrder.objects.filter(target_month=current_month).first()
+    orders_current_month= Order.get_total_orders_by_month(current_month,current_year)
+
+    target_orders= TargetOrder.objects.filter(target_month=current_month, target_year=current_year).first()
 
     if target_orders is not None: 
         monthly_target_orders = target_orders.target_value
@@ -98,11 +100,58 @@ def monthly_target_order_view(request):
     data= {       
        "monthly_target_orders": numerize.numerize(monthly_target_orders),
        "target_gained": format(target_gained, ".0f"), 
-       "orders_current_month": numerize.numerize(orders_current_month)
+        "orders_current_month": numerize.numerize(orders_current_month)
     }
         
     return JsonResponse({"data":data})
     
 
+def profit_expense_customer_view(request):
+    current_date = datetime.datetime.now()
+    current_month = current_date.month
+    year= current_date.year
+    # print("year", current_year)
 
+    if current_month == 1 :
+        previous_month = 12         
+     
+    else:
+        previous_month= current_month - 1
+       
+    current_month_name = calendar.month_name[current_month]
+    previous_month_name = calendar.month_name[previous_month]
  
+    sales_current_month=  Order.get_total_sales_by_month(current_month, year) 
+    buying_price_current_month=  Order.get_total_buying_price_by_month(current_month, year) 
+
+    
+    if previous_month == 12 :
+        sales_previous_month =  Order.get_total_sales_by_month(previous_month, year-1) 
+        buying_price_previous_month =  Order.get_total_buying_price_by_month(previous_month, year-1) 
+
+    else:
+        sales_previous_month =  Order.get_total_sales_by_month(previous_month, year) 
+        buying_price_previous_month = Order.get_total_buying_price_by_month(previous_month, year) 
+
+    
+    profit_current_month = sales_current_month - buying_price_current_month
+    profit_previous_month = sales_previous_month - buying_price_previous_month
+ 
+    if profit_previous_month != 0 :
+        profit_change_in_percentage =  (profit_current_month - profit_previous_month) / profit_previous_month * 100
+    
+    else:
+        profit_change_in_percentage = 0.0
+
+
+    if profit_change_in_percentage > 0:
+        increased = True
+    elif profit_change_in_percentage < 0:
+        increased = False
+    else:
+        increased = None
+
+
+    print("profit", profit_current_month, profit_previous_month)
+    print("profit_percentage", profit_change_in_percentage)
+    print("increaded", increased)
