@@ -6,7 +6,7 @@
 {% endblock style %}
 
 {% block content %}
-<div class="dashboard-analytics-section">
+<div class="dashboard-analytics-section mt-4">
     <div class="row">
         <div class="col-lg-8">
             <div class="row">
@@ -28,12 +28,54 @@
 
                 </div>
             </div>
+            <div class="swiper-container mt-4">
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide profit-container">
+                            <div class="svg-contaier">
+                                <svg width="29" height="29" viewBox="0 0 29 29" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.375" y="0.375" width="27.75" height="27.75" rx="13.875" fill="#9A55FF" />
+                                    <rect x="0.375" y="0.375" width="27.75" height="27.75" rx="13.875" stroke="#9A55FF"
+                                        stroke-width="0.75" />
+                                    <g clip-path="url(#clip0_51_25150)">
+                                        <rect width="12" height="12" transform="translate(8.25 8.25)" fill="white"
+                                            fill-opacity="0.01" />
+                                        <g clip-path="url(#clip1_51_25150)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M8.25 8.25H9V19.5H20.25V20.25H8.25V8.25ZM15.75 10.875C15.75 10.7755 15.7895 10.6802 15.8598 10.6098C15.9302 10.5395 16.0255 10.5 16.125 10.5H19.125C19.2245 10.5 19.3198 10.5395 19.3902 10.6098C19.4605 10.6802 19.5 10.7755 19.5 10.875V13.875C19.5 13.9745 19.4605 14.0698 19.3902 14.1402C19.3198 14.2105 19.2245 14.25 19.125 14.25C19.0255 14.25 18.9302 14.2105 18.8598 14.1402C18.7895 14.0698 18.75 13.9745 18.75 13.875V11.925L16.0403 15.2378C16.0071 15.2782 15.9658 15.3113 15.9191 15.3349C15.8723 15.3585 15.8212 15.372 15.7689 15.3746C15.7166 15.3772 15.6644 15.3689 15.6155 15.3501C15.5667 15.3313 15.5223 15.3025 15.4853 15.2655L13.545 13.3253L10.803 17.0955C10.743 17.1718 10.6558 17.2218 10.5597 17.2351C10.4636 17.2485 10.366 17.224 10.2876 17.1669C10.2091 17.1098 10.1558 17.0245 10.139 16.929C10.1221 16.8334 10.1429 16.735 10.197 16.6545L13.197 12.5295C13.2288 12.4856 13.2698 12.4492 13.3171 12.4227C13.3644 12.3962 13.4168 12.3802 13.4709 12.376C13.5249 12.3717 13.5792 12.3792 13.6301 12.3979C13.681 12.4167 13.7272 12.4462 13.7655 12.4845L15.7223 14.442L18.3337 11.25H16.125C16.0255 11.25 15.9302 11.2105 15.8598 11.1402C15.7895 11.0698 15.75 10.9745 15.75 10.875Z"
+                                                fill="white" />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="profit-title">Total Profit</p>
+                            <div id="dashboard-analytics-section-profit-digit-container"
+                                class="profit-digit-container mb-2">
+                            </div>
+                            <div class="profit-chart-container">
+                                <canvas id="dashboard-analytics-section-profit-chart-canvas"
+                                    class="profit-chart-canvas"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            2
+                        </div>
+                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide">Slide 4</div>
+                        <div class="swiper-slide">Slide 5</div>
+                        ...
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="col-lg-4">best selling products</div>
     </div>
-    <div class="swiper-container">
-        swiper
-    </div>
+
 </div>
 {% endblock content %}
 

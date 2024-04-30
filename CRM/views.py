@@ -106,7 +106,7 @@ def monthly_target_order_view(request):
     return JsonResponse({"data":data})
     
 
-def profit_expense_customer_view(request):
+def profit_view(request):
     current_date = datetime.datetime.now()
     current_month = current_date.month
     year= current_date.year
@@ -152,6 +152,14 @@ def profit_expense_customer_view(request):
         increased = None
 
 
-    print("profit", profit_current_month, profit_previous_month)
-    print("profit_percentage", profit_change_in_percentage)
-    print("increaded", increased)
+    data = {
+        "profit": format(profit_current_month, ".2f"),
+        "profit_percentage": format(abs(profit_change_in_percentage),".2f"),
+        "increased": increased,
+        "profit_y_axis":[profit_previous_month, profit_current_month],
+        "months_x_axis":[previous_month_name, current_month_name]
+
+    }
+
+    return JsonResponse({"data": data})
+     

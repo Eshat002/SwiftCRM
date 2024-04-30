@@ -99,3 +99,39 @@
     border-radius: 10px;
 
 }
+
+.dashboard-analytics-section .swiper-container .swiper-wrapper .swiper-slide {
+    background-color: #ffffff;
+    padding: 14px;
+    border-radius: 15px !important;
+}
+
+
+.dashboard-analytics-section .swiper-container .swiper-wrapper .profit-container .profit-title {
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #6C757D;
+    margin-top: 10px;
+
+}
+
+#dashboard-analytics-section-profit-digit-container .profit-current-month {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 24px !important;
+    color: #212529;
+    margin-top: -8px;
+
+}
+
+
+#dashboard-analytics-section-profit-digit-container .profit-change {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: #41A5FF;
+    height: 20px;
+    padding: 3.5px 5px;
+    border-radius: 10px;
+}
