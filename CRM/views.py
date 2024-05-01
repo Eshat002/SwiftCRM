@@ -40,14 +40,15 @@ def income_view(request):
 
     else:
         sales_previous_month=  Order.get_total_sales_by_month(previous_month, year) 
-    
+     
+     
     if before_previous_month == 12 or before_previous_month == 11 :        
         sales_before_previous_month =  Order.get_total_sales_by_month(before_previous_month, year-1)  
 
     else :
         sales_before_previous_month =  Order.get_total_sales_by_month(before_previous_month, year)  
 
-    
+ 
 
     data = {
      "months_y_axis": [current_month_name, previous_month_name, before_previous_month_name],
@@ -55,11 +56,15 @@ def income_view(request):
       
     }
 
-    if sales_previous_month != 0 :
-        sales_change_in_percentage =  (sales_current_month - sales_previous_month) / sales_previous_month * 100
-    
-    else:
+    if sales_previous_month == 0 and sales_current_month == 0 :
         sales_change_in_percentage = 0.0
+     
+    elif sales_previous_month == 0 :
+        sales_change_in_percentage = float('inf')
+
+    else:
+        sales_change_in_percentage =  (sales_current_month - sales_previous_month) / sales_previous_month * 100
+
 
     if sales_change_in_percentage > 0:
         increased = True
@@ -109,6 +114,8 @@ def monthly_target_order_view(request):
 def profit_view(request):
     current_date = datetime.datetime.now()
     current_month = current_date.month
+ 
+
     year= current_date.year
     # print("year", current_year)
 
@@ -136,12 +143,16 @@ def profit_view(request):
     
     profit_current_month = sales_current_month - buying_price_current_month
     profit_previous_month = sales_previous_month - buying_price_previous_month
- 
-    if profit_previous_month != 0 :
-        profit_change_in_percentage =  (profit_current_month - profit_previous_month) / profit_previous_month * 100
     
-    else:
+    if profit_previous_month == 0 and profit_current_month == 0:
         profit_change_in_percentage = 0.0
+    
+    elif profit_previous_month == 0:
+        profit_change_in_percentage = float("inf")
+
+    else:
+        profit_change_in_percentage =  (profit_current_month - profit_previous_month) / profit_previous_month * 100
+
 
 
     if profit_change_in_percentage > 0:
