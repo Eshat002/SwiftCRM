@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import datetime
-from .models import Order, TargetOrder
+from .models import Order, TargetOrder, Expense
 import calendar
 from numerize import numerize 
-
+from decimal import Decimal
+from customer.models import Customer
 
 def dashboard_view(request):
     return render(request, "dashboard.html",{})
@@ -57,7 +58,7 @@ def income_view(request):
     }
 
     if sales_previous_month == 0 and sales_current_month == 0 :
-        sales_change_in_percentage = 0.0
+        sales_change_in_percentage = 0
      
     elif sales_previous_month == 0 :
         sales_change_in_percentage = float('inf')
@@ -99,7 +100,7 @@ def monthly_target_order_view(request):
     if monthly_target_orders != 0:
         target_gained = (orders_current_month / monthly_target_orders) * 100
     else:
-        target_gained = 0.0  # If monthly_target_orders is zero, consider target_gained as 0%
+        target_gained = 0  # If monthly_target_orders is zero, consider target_gained as 0%
 
 
     data= {       
@@ -114,11 +115,9 @@ def monthly_target_order_view(request):
 def profit_view(request):
     current_date = datetime.datetime.now()
     current_month = current_date.month
- 
-
     year= current_date.year
-    # print("year", current_year)
-
+ 
+ 
     if current_month == 1 :
         previous_month = 12         
      
@@ -130,7 +129,6 @@ def profit_view(request):
  
     sales_current_month=  Order.get_total_sales_by_month(current_month, year) 
     buying_price_current_month=  Order.get_total_buying_price_by_month(current_month, year) 
-
     
     if previous_month == 12 :
         sales_previous_month =  Order.get_total_sales_by_month(previous_month, year-1) 
@@ -145,14 +143,13 @@ def profit_view(request):
     profit_previous_month = sales_previous_month - buying_price_previous_month
     
     if profit_previous_month == 0 and profit_current_month == 0:
-        profit_change_in_percentage = 0.0
+        profit_change_in_percentage = 0
     
     elif profit_previous_month == 0:
         profit_change_in_percentage = float("inf")
 
     else:
         profit_change_in_percentage =  (profit_current_month - profit_previous_month) / profit_previous_month * 100
-
 
 
     if profit_change_in_percentage > 0:
@@ -174,3 +171,128 @@ def profit_view(request):
 
     return JsonResponse({"data": data})
      
+
+
+def expense_view(request):
+
+    current_date = datetime.datetime.now()
+    current_month = current_date.month
+    current_year= current_date.year
+
+    if current_month == 1 :
+        previous_month = 12         
+     
+    else:
+        previous_month = current_month - 1
+       
+    current_month_name = calendar.month_name[current_month]
+    previous_month_name = calendar.month_name[previous_month]
+ 
+    expense_current_month_obj = Expense.objects.filter(month=current_month, year=current_year).first()
+    
+    if expense_current_month_obj is not None: 
+        expense_current_month = expense_current_month_obj.value
+    
+    else:
+        expense_current_month = 0
+
+
+    if previous_month == 12 :
+        expense_previous_month_obj = Expense.objects.filter(month=previous_month, year=current_year-1).first()
+        
+        if expense_previous_month_obj is not None:
+            expense_previous_month = expense_previous_month_obj.value
+        else:
+            expense_previous_month = 0
+ 
+    else:
+        expense_previous_month_obj = Expense.objects.filter(month=previous_month, year=current_year).first()
+
+        if expense_previous_month_obj is not None:
+            expense_previous_month = expense_previous_month_obj.value
+        else:
+            expense_previous_month =  0
+        
+
+    if expense_previous_month == 0 and expense_current_month == 0:
+        expense_change_in_percentage = 0
+    
+    elif expense_previous_month == 0:
+        expense_change_in_percentage = float("inf")
+
+    else:
+        expense_change_in_percentage =  (expense_current_month - expense_previous_month) / expense_previous_month * 100
+   
+   
+    if expense_change_in_percentage > 0:
+        increased = True
+    elif expense_change_in_percentage < 0:
+        increased = False
+    else:
+        increased = None
+
+
+    data = {
+        "expense": format(expense_current_month, ".2f"),
+        "expense_percentage": format(abs(expense_change_in_percentage),".2f"),
+        "increased": increased,
+        "expense_y_axis":[expense_previous_month, expense_current_month],
+        "months_x_axis":[previous_month_name, current_month_name]
+
+    }
+
+    return JsonResponse({"data": data})
+     
+
+def customer_view(request):
+
+    current_date = datetime.datetime.now()
+    current_month = current_date.month
+    current_year= current_date.year
+
+    if current_month == 1 :
+        previous_month = 12         
+     
+    else:
+        previous_month = current_month - 1
+       
+    current_month_name = calendar.month_name[current_month]
+    previous_month_name = calendar.month_name[previous_month]
+ 
+    customer_current_month= Customer.objects.filter(timestamp__month=current_month, timestamp__year=current_year).count()
+ 
+    if previous_month == 12:
+       customer_previous_month= Customer.objects.filter(timestamp__month=previous_month, timestamp__year=current_year-1).count()
+        
+    else: 
+       customer_previous_month= Customer.objects.filter(timestamp__month=previous_month, timestamp__year=current_year).count()
+
+
+    if customer_previous_month == 0 and customer_current_month == 0:
+        customer_change_in_percentage = 0
+    
+    elif customer_previous_month == 0:
+        customer_change_in_percentage = float("inf")
+
+    else:
+        customer_change_in_percentage =  (int(customer_current_month) - int(customer_previous_month)) / int(customer_previous_month) * 100
+   
+   
+    if customer_change_in_percentage > 0:
+        increased = True
+    elif customer_change_in_percentage < 0:
+        increased = False
+    else:
+        increased = None
+
+
+    data = {
+        "customer_current_month": format(customer_current_month, ".0f"),
+        "customer_percentage": format(abs(customer_change_in_percentage),".2f"),
+        "increased": increased,
+        "customer_y_axis":[customer_previous_month, customer_current_month],
+        "months_x_axis":[previous_month_name, current_month_name]
+
+    }
+
+    return JsonResponse({"data": data})

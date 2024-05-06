@@ -135,3 +135,33 @@
     padding: 3.5px 5px;
     border-radius: 10px;
 }
+
+
+.dashboard-analytics-section .swiper-container .swiper-wrapper .expense-container .expense-title {
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #6C757D;
+    margin-top: 10px;
+}
+
+
+
+#dashboard-analytics-section-expense-digit-container .expense-change {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: #41A5FF;
+    height: 20px;
+    padding: 3.5px 5px;
+    border-radius: 10px;
+}
+
+
+#dashboard-analytics-section-expense-digit-container .expense-current-month {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 24px !important;
+    color: #212529;
+    margin-top: -8px;
+}

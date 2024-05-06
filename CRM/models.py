@@ -123,18 +123,17 @@ class TargetOrder(models.Model):
         unique_together = ('target_month', 'target_year')
 
 
-class TargetExpense(models.Model):
-    target_month = models.IntegerField(choices=MONTH_CHOICES)
-    target_year = models.PositiveIntegerField()
-
-    target_value = models.DecimalField(max_digits=10, decimal_places=2, default=100.00)
+class Expense(models.Model):
+    month = models.IntegerField(choices=MONTH_CHOICES)
+    year = models.PositiveIntegerField()
+    value = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     # Add more fields as needed
 
     def __str__(self):
-        return f"Expense for {dict(MONTH_CHOICES)[self.target_month]} {self.target_year} is {self.target_value}"
+        return f"Expense for {dict(MONTH_CHOICES)[self.month]} {self.year} is {self.value}"
  
     class Meta:
-        unique_together = ('target_month', 'target_year')
+        unique_together = ('month', 'year')
 
 
 

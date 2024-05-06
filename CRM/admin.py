@@ -28,5 +28,5 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)
 admin.site.register(Order)
 admin.site.register(TargetOrder)
-admin.site.register(TargetExpense)
+admin.site.register(Expense)
 

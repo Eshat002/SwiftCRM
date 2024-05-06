@@ -6,5 +6,7 @@ urlpatterns = [
     path('income-view/', views.income_view),
     path('monthly-target-order/', views.monthly_target_order_view),
     path('profit/', views.profit_view),
+    path('expense/', views.expense_view),
+    path('customer-analytics/', views.customer_view),
 
 ]
