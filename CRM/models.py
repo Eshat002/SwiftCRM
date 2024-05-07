@@ -23,8 +23,8 @@ class Product(models.Model):
     #         raise ValidationError("Buying price must be lower than the actual price.")
 
     #     super(Product, self).save(*args, **kwargs)
-
- 
+     
+        
 
     def __str__(self):
         return f"{self.name} - {self.price}" 

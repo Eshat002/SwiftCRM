@@ -6,7 +6,9 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #F8F9FA;
+    /* background-color: #F8F9FA; */
+    background-color: #f8f8f8;
+
 }
 
 .base .container-fluid {

@@ -6,6 +6,7 @@ import calendar
 from numerize import numerize 
 from decimal import Decimal
 from customer.models import Customer
+from utils.utils import get_top_sold_products
 
 def dashboard_view(request):
     return render(request, "dashboard.html",{})
@@ -296,3 +297,23 @@ def customer_view(request):
     }
 
     return JsonResponse({"data": data})
+
+
+
+def best_selling_products_view(request):
+    best_selling_products = get_top_sold_products()
+    data = []
+ 
+    for product in best_selling_products:
+        product_data = {
+            "name":product.name,
+            "price":product.price,
+            "total_quantity": product.total_quantity_sold,
+            "category":product.category.name,
+            "image":product.image.url
+        }
+        data.append(product_data)
+
+    return JsonResponse({"data": data})
+
+
