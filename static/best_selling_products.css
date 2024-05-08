@@ -1,0 +1,53 @@
+.best-selling-products {
+    background-color: #FFFFFF;
+    padding: 15px 15px 35px 15px;
+    border-radius: 10px;
+}
+
+.best-selling-products .headline {
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #212529;
+    border-bottom: 1.4px solid #D9D9D9;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.best-selling-products .product-name {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #47178E
+}
+
+.best-selling-products .product-category {
+    font-family: "Barlow", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6C757D
+}
+
+.best-selling-products .product-price {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #47178E
+}
+
+.best-selling-products .product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+
+
+}
+
+
+.best-selling-products .single-product {
+    background-color: #F8F9FA;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
