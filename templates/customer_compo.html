@@ -1,0 +1,12 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'customer_compo.css' %}">
+
+
+<div id="customer-list"></div>
+<div id="pagination-buttons">
+    <button id="prev-btn" onclick="loadPreviousPage()">Previous</button>
+    <button id="next-btn" onclick="loadNextPage()">Next</button>
+</div>
+
+<script src="{% static 'customer_compo.js' %}"></script>

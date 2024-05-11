@@ -8,7 +8,17 @@ class Customer(models.Model):
     phone_number = models.CharField(max_length=20, null=True, blank= True)
     timestamp = models.DateTimeField(auto_now_add=False, null=True)
 
+    @property
+    def total_spent(self):
+        total_spent = 0
+
+        # Iterate over each order related to this customer
+        for order in self.orders.all():
+            total_spent += order.quantity * order.product.price
+
+        return total_spent
     
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
