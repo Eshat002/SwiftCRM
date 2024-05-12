@@ -18,6 +18,8 @@ class Customer(models.Model):
 
         return total_spent
     
+    # class Meta:
+    #     ordering =['-id']
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

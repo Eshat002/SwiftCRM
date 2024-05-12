@@ -6,9 +6,12 @@ async function loadCustomers(pageNumber) {
     try {
         const response = await fetch(`/customers/?page=${pageNumber}`);
         const data = await response.json();
-
         // Update customer list
-        displayCustomers(data.data);
+        setTimeout(() => {
+            document.querySelector(".customer-list-container .spinner-container").classList.add("d-none")
+            displayCustomers(data.data);
+        }, 100);
+
 
         // Update current page number
         currentPage = pageNumber;
@@ -27,10 +30,15 @@ function displayCustomers(customers) {
 
     customers.forEach(customer => {
         const customerDiv = document.createElement('div');
+        customerDiv.classList.add("row", "px-3")
+        // customerDiv.classList.add("px-3")
+        // // customerDiv.classList.add("text-end")
         customerDiv.innerHTML = `
-            <p>Name: ${customer.name}</p>
-            <p>Email: ${customer.email}</p>
-            <p>Total Spent: ${customer.total_spent}</p>
+            <div class='col-lg name'> <p>${customer.name}</p> </div>
+            <div class='col-lg email'><p>${customer.email} </p> </div>
+            <div class='col-lg phone'><p> ${customer.phone} </p></div>
+            <div class='col-lg address'> <p>${customer.address} </p> </div>
+            <div class='col-lg total_spent'><p> $${customer.total_spent} </p></div>
         `;
         customerList.appendChild(customerDiv);
     });
@@ -38,14 +46,26 @@ function displayCustomers(customers) {
 
 // Function to load the previous page
 function loadPreviousPage() {
+    document.querySelector(".customer-list-container .spinner-container").classList.remove("d-none")
+    document.getElementById('customer-list').innerHTML = ''
+
     if (currentPage > 1) {
-        loadCustomers(currentPage - 1);
+        setTimeout(() => {
+            loadCustomers(currentPage - 1);
+        }, 100);
+
     }
 }
 
 // Function to load the next page
 function loadNextPage() {
-    loadCustomers(currentPage + 1);
+    document.querySelector(".customer-list-container .spinner-container").classList.remove("d-none")
+    document.getElementById('customer-list').innerHTML = ''
+
+    setTimeout(() => {
+        loadCustomers(currentPage + 1);
+    }, 100);
+
 }
 
 // Function to update pagination buttons state

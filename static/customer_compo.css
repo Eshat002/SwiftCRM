@@ -1,0 +1,45 @@
+.customer-compo {
+    border-radius: 10px;
+}
+
+.customer-compo .customer-list-container {
+    background-color: #ffffff;
+    padding-top: 20px;
+    margin-bottom: 15px;
+}
+
+
+.customer-compo .customer-placeholder {
+    background-color: #EFE6FF;
+    /* margin-bottom: 10px; */
+}
+
+.customer-compo .customer-placeholder p {
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 10px;
+    color: #212529;
+    margin-bottom: 10px;
+}
+
+.customer-compo #customer-list p {
+    font-family: "Barlow", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #6C757D;
+    margin-bottom: 30px;
+}
+
+.customer-compo #pagination-buttons #prev-btn,
+.customer-compo #pagination-buttons #next-btn {
+    border: 1px solid #9A55FF;
+    /* border: none; */
+    padding: 2px 15px 3px 15px;
+    background-color: transparent;
+    font-family: "Barlow", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 5px;
+
+}
