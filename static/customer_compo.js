@@ -6,18 +6,29 @@ async function loadCustomers(pageNumber) {
     try {
         const response = await fetch(`/customers/?page=${pageNumber}`);
         const data = await response.json();
+        if (data.data == "Your customers appear here") {
+            setTimeout(() => {
+                document.querySelector(".customer-list-container .spinner-container").classList.add("d-none")
+                const customerList = document.getElementById('customer-list');
+                customerList.innerHTML = `<div><h5 class='text-center mt-5'>${data.data}</h5></div>`
+            }, 100);
+
+        }
+        else {
+            setTimeout(() => {
+                document.querySelector(".customer-list-container .spinner-container").classList.add("d-none")
+                displayCustomers(data.data);
+            }, 100);
+
+            console.log("nic", data.data)
+            // Update current page number
+            currentPage = pageNumber;
+
+            // Enable/disable pagination buttons based on response metadata
+            updatePaginationButtons(data.previous_page, data.next_page);
+        }
         // Update customer list
-        setTimeout(() => {
-            document.querySelector(".customer-list-container .spinner-container").classList.add("d-none")
-            displayCustomers(data.data);
-        }, 100);
 
-
-        // Update current page number
-        currentPage = pageNumber;
-
-        // Enable/disable pagination buttons based on response metadata
-        updatePaginationButtons(data.previous_page, data.next_page);
     } catch (error) {
         console.error('Error fetching customers:', error);
     }

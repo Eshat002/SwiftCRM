@@ -4,10 +4,13 @@ from django.http import JsonResponse
 from django.core.paginator import Paginator
 
 def customers(request):
-    customers =  Customer.objects.all()
 
+    customers = Customer.objects.all()
+ 
+    if len(customers) == 0:
+        return JsonResponse({"data":"Your customers appear here"})
     # Number of items per page
-    items_per_page = 8   
+    items_per_page = 8
 
     paginator = Paginator(customers, items_per_page)
     page_number = request.GET.get('page')
