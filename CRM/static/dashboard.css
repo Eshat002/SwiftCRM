@@ -70,11 +70,11 @@
 
 }
 
-#dashboard-analytics-section-target-percentage-container {
+/* #dashboard-analytics-section-target-percentage-container {
     position: absolute;
     top: 31%;
     left: 39%
-}
+} */
 
 
 
@@ -193,3 +193,27 @@
     padding: 3.5px 5px;
     border-radius: 10px;
 }
+
+
+/* css media query */
+
+/* @media screen and (min-width:1920px) {
+    #dashboard-analytics-section-target-percentage-container {
+        top: 32%;
+        left: 39%;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    #dashboard-analytics-section-target-percentage-container {
+        top: 28%;
+        left: 38%;
+    }
+}
+
+@media screen and (min-width:1366px) {
+    #dashboard-analytics-section-target-percentage-container {
+        top: 24%;
+        left: 38%;
+    }
+} */

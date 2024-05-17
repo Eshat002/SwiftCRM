@@ -1,0 +1,27 @@
+footer {
+    background-color: #FFFFFF;
+    padding: 0px 45px
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer p {
+    font-family: "Barlow", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #212529;
+}
+
+footer .footer-copyright {
+    font-family: "Barlow", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #4C4A4F;
+}
+
+.footer-section2 {
+    border-top: 1px solid lightgray;
+    padding: 20px 0px 7px 0px
+}

@@ -1,5 +1,45 @@
 const dashboardAnalyticsIncomeNumberContainer = document.getElementById("dashboard-analytics-section-income-number-container")
 
+function ChartPlugIn() {
+
+    const centerTextPlugin = {
+        id: 'centerTextPlugin',
+        beforeDraw: function (chart) {
+
+            const ctx = chart.ctx;
+            const width = chart.width;
+            const height = chart.height;
+            const centerX = width / 2;
+            const centerY = height / 1.8;  // Adjusted to center vertically as well
+            const innerRadius = chart.options.cutout || 0;
+
+            // Custom text to display (adjust as needed)
+            // const text = 'ss';
+            const text = chart.options.plugins.centerTextPlugin.text || '';
+
+            // Styling for the centered text
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = '500 24px Roboto';
+            ctx.fillStyle = 'white';
+
+            // Draw the text in the center of the doughnut chart
+            ctx.fillText(text, centerX, centerY);
+        }
+    };
+
+    // Register the plugin
+    Chart.register(centerTextPlugin);
+}
+
+ChartPlugIn()
+
+
+
+
+
+
+
 
 // fetch('/monthly-target-order/')
 //     .then(response => {
@@ -54,7 +94,8 @@ const Income = () => {
 
                 options: {
                     indexAxis: 'y', // <-- here
-                    responsive: true
+                    responsive: true,
+                    showTextInsideDoughnut: true
                 }
             });
 
@@ -147,6 +188,7 @@ const monthlyTargetOrder = () => {
 
             ]
 
+
             const chart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
@@ -162,12 +204,23 @@ const monthlyTargetOrder = () => {
                 options: {
                     cutout: 40,
                     responsive: true,
+                    plugins: {
+                        centerTextPlugin: {
+                            text: `${data.data.target_gained}%`
+                        }
+                    }
+
+
 
                 }
 
             });
-            const dashboardAnalyticsTargetPercentageContainer = document.getElementById('dashboard-analytics-section-target-percentage-container')
-            dashboardAnalyticsTargetPercentageContainer.innerHTML = `<div><p>${data.data.target_gained}%</p></div>`
+
+
+
+
+            // const dashboardAnalyticsTargetPercentageContainer = document.getElementById('dashboard-analytics-section-target-percentage-container')
+            // dashboardAnalyticsTargetPercentageContainer.innerHTML = `<div><p>${data.data.target_gained}%</p></div>`
 
             const dashboardAnalyticsTargetNumbersContainer = document.getElementById('dashboard-analytics-section-target-numbers-container')
             dashboardAnalyticsTargetNumbersContainer.innerHTML = `<div>
@@ -229,7 +282,7 @@ const profit = () => {
 
 
             dashboardAnalyticsProfitDigitContainer.innerHTML = `<div class="d-flex justify-content-between">
-            <div class='profit-current-month'>   $ ${data.data.profit}   </div>
+            <div class='profit-current-month'>   $${data.data.profit}   </div>
             <div style='background-color:${bgColor}; color:${color}' class='profit-change'><span>${sign}</span> ${data.data.profit_percentage}%</div>
             </div>`
 
@@ -308,7 +361,7 @@ const expense = () => {
 
 
             dashboardAnalyticsExpenseDigitContainer.innerHTML = `<div class="d-flex justify-content-between">
-            <div class='expense-current-month'>   $ ${data.data.expense}   </div>
+            <div class='expense-current-month'>   $${data.data.expense}   </div>
             <div style='background-color:${bgColor}; color:${color}' class='expense-change'><span>${sign}</span> ${data.data.expense_percentage}%</div>
             </div>`
 
@@ -420,3 +473,4 @@ const CustomerAnalytics = () => {
 }
 
 CustomerAnalytics()
+

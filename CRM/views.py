@@ -106,8 +106,8 @@ def monthly_target_order_view(request):
 
     data= {       
        "monthly_target_orders": numerize.numerize(monthly_target_orders),
-       "target_gained": format(target_gained, ".0f"), 
-        "orders_current_month": numerize.numerize(orders_current_month)
+       "target_gained": format(target_gained, ".0f"),
+       "orders_current_month": numerize.numerize(orders_current_month)
     }
         
     return JsonResponse({"data":data})
