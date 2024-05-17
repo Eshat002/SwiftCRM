@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include("CRM.urls")),  
     path('get-headline-user/', views.get_headline_user),
     path('customers/', include("customer.urls")),
+    path('analytics/', include("Analytics.urls")),
 
 ]
 

@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'CRM',
     'profiles',
-    'customer'
+    'customer',
+    'Analytics'
 ]
 
 MIDDLEWARE = [
