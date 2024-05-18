@@ -9,6 +9,7 @@ from django.utils import timezone
 def sales_analytics(request):
     # Calculate date ranges
     today = timezone.now().date()
+    print("today", today)
     last_7_days_start = today - timedelta(days=7)
     last_7_days_end = today
     previous_7_days_start = last_7_days_start - timedelta(days=7)

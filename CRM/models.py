@@ -35,7 +35,7 @@ class Order(models.Model):
     product = models.ForeignKey(Product, null=True, blank=False, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, related_name='orders', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
-    timestamp = models.DateTimeField(auto_now_add=False)
+    timestamp = models.DateField(auto_now_add=False)
     
 
     @classmethod
@@ -51,7 +51,7 @@ class Order(models.Model):
         return total_orders_for_month
     
     def __str__(self):
-        return str(self.timestamp)
+        return self.timestamp
     
     
     @classmethod
