@@ -13,6 +13,7 @@ def dashboard_view(request):
 
 
 def income_view(request):
+    
     current_date = datetime.datetime.now()
     current_month = current_date.month
     year= current_date.year
