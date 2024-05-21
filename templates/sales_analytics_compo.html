@@ -1,0 +1,17 @@
+{% load static %}
+
+
+<link rel="stylesheet" href="{% static 'sales_analytics_compo.css' %}">
+
+
+<div id="sales-analytics-compo">
+    <div class="d-flex border-bottom">
+        <div style="width: 22%;" id="sales-analytics-compo-digit-container"
+            class="d-flex justify-content-between align-items-center">
+        </div>
+        <div style="width: 78%;"></div>
+    </div>
+    <canvas id="sales-analytics-canvas"></canvas>
+</div>
+
+<script src="{% static 'sales_analytics_compo.js' %}"></script>

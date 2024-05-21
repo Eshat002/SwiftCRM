@@ -6,6 +6,10 @@ from CRM.models import Order
 from django.utils import timezone
 
 
+def analytics_view(request):
+    return render(request, "analytics.html",{})
+
+
 def sales_analytics(request):
     # Calculate date ranges
     today = timezone.now().date()
@@ -79,8 +83,8 @@ def sales_analytics(request):
 
     # Create response data
     response_data = {
-        'last_7_days_sales': last_7_days_sales,
-        'previous_7_days_sales': previous_7_days_sales,
+        'last_7_days_sales': format(last_7_days_sales, ".2f"),
+        'previous_7_days_sales': format(previous_7_days_sales, ".2f"),
         'comparison_result': format(abs(comparison_result) ,".2f"),
         'increased':increased,
         'last_7_days_daily_sales': last_7_days_daily_sales,
@@ -88,7 +92,7 @@ def sales_analytics(request):
         'previous_7_days_daily_sales': previous_7_days_daily_sales,
         'previous_7_days_date_names': previous_7_days_date_names
     }
-
+   
     # Return JSON response
     return JsonResponse(response_data)
 

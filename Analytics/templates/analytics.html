@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type='text/css' href="{% static 'analytics.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="analytics">
+    <div class="row">
+        <div class="col-lg-8 mt-4">
+            {% include 'sales_analytics_compo.html' %}
+        </div>
+        <div class="col-lg-4">b</div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script src="{% static 'analytics.js' %}"></script>
+
+{% endblock scripts %}

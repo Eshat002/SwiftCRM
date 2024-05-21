@@ -1,0 +1,31 @@
+#sales-analytics-compo {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#sales-analytics-compo .sales-change {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: #41A5FF;
+    height: 20px;
+    padding: 3.5px 5px;
+    border-radius: 10px;
+}
+
+#sales-analytics-compo .sales-analytics-title {
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #212529;
+
+}
+
+#sales-analytics-compo .sales-analytics-subtitle {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    color: #9A55FF;
+
+}
